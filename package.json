@@ -1,0 +1,24 @@
+{
+  "name": "context-dictionary",
+  "version": "1.0.0",
+  "description": "A context-aware dictionary extension using Gemini AI",
+  "main": "background.js",
+  "scripts": {
+    "build": "node build.js",
+    "clean": "node build.js --clean",
+    "build:clean": "npm run clean && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dictionary",
+    "context",
+    "ai",
+    "extension",
+    "browser"
+  ],
+  "author": "Reginald Kyalo",
+  "license": "MIT",
+  "dependencies": {
+    "webextension-polyfill": "^0.10.0"
+  }
+}

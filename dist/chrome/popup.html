@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context Dictionary</title>
+  <style>
+    body {
+      width: 320px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+    
+    header {
+      background: #4285f4;
+      color: white;
+      padding: 12px;
+      text-align: center;
+    }
+    
+    .container {
+      padding: 12px;
+    }
+    
+    h1 {
+      font-size: 18px;
+      margin: 0;
+    }
+    
+    h2 {
+      font-size: 16px;
+      margin: 10px 0;
+      color: #4285f4;
+    }
+    
+    .history-item {
+      background: white;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .word {
+      font-weight: bold;
+      font-size: 16px;
+      color: #4285f4;
+    }
+    
+    .definition {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    
+    .timestamp {
+      color: #999;
+      font-size: 11px;
+      margin-top: 5px;
+    }
+    
+    .empty-message {
+      text-align: center;
+      color: #666;
+      margin: 30px 0;
+      font-style: italic;
+    }
+    
+    footer {
+      font-size: 11px;
+      color: #999;
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid #eee;
+    }
+    
+    .clear-btn {
+      background: #f44336;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    
+    .clear-btn:hover {
+      background: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Context Dictionary</h1>
+  </header>
+  
+  <div class="container">
+    <h2>Recent Lookups</h2>
+    <div id="history-container">
+      <div class="empty-message">No lookups yet. Double-tap on any word to define it.</div>
+    </div>
+    
+    <div id="controls" style="text-align: center; display: none;">
+      <button id="clear-history" class="clear-btn">Clear History</button>
+    </div>
+  </div>
+  
+  <footer>
+    Created by Reginald Kyalo &copy; 2025
+  </footer>
+  
+  <script src="browser-polyfill.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

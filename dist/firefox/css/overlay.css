@@ -1,0 +1,91 @@
+/* Styles for the definition overlay */
+
+.cd-dictionary-overlay {
+  display: none;
+  position: absolute;
+  width: 300px;
+  max-width: 90vw;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 2147483647; /* Highest possible z-index */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+  animation: cd-fadein 0.2s ease-out;
+}
+
+@keyframes cd-fadein {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cd-header {
+  padding: 10px 15px;
+  background: #4285f4;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cd-word {
+  font-weight: bold;
+  font-size: 16px;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cd-close-btn {
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 22px;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.cd-close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.cd-definition {
+  padding: 15px;
+  background: white;
+  max-height: 250px;
+  overflow-y: auto;
+  color: #333;
+}
+
+.cd-source {
+  padding: 8px 15px;
+  font-size: 11px;
+  color: #999;
+  background: #f8f8f8;
+  text-align: right;
+  border-top: 1px solid #eee;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .cd-dictionary-overlay {
+    background-color: #333;
+    color: #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .cd-definition {
+    background: #333;
+    color: #eee;
+  }
+  
+  .cd-source {
+    background: #222;
+    color: #aaa;
+    border-top: 1px solid #444;
+  }
+}
