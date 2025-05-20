@@ -1,24 +1,19 @@
 {
-  "name": "context-dictionary",
+  "name": "context-aware-dictionary",
   "version": "1.0.0",
   "description": "A context-aware dictionary extension using Gemini AI",
-  "main": "background.js",
   "scripts": {
     "build": "node build.js",
-    "clean": "node build.js --clean",
-    "build:clean": "npm run clean && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:chrome": "node build.js chrome",
+    "build:firefox": "node build.js firefox",
+    "package:chrome": "npm run build:chrome && cd dist/chrome && zip -r ../context-dictionary-chrome.zip *",
+    "package:firefox": "npm run build:firefox && cd dist/firefox && web-ext build",
+    "deploy:backend": "gcloud app deploy"
   },
-  "keywords": [
-    "dictionary",
-    "context",
-    "ai",
-    "extension",
-    "browser"
-  ],
-  "author": "Reginald Kyalo",
-  "license": "MIT",
   "dependencies": {
     "webextension-polyfill": "^0.10.0"
+  },
+  "devDependencies": {
+    "web-ext": "^7.6.0"
   }
 }

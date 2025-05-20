@@ -4,7 +4,7 @@
 const definitionCache = {};
 
 // Gemini API key (replace with your actual key)
-const GEMINI_API_KEY = 'AIzaSyB1yd8k_keyDemLNp7Z1g7WnPJBIESubAA'; 
+const GEMINI_API_KEY = 'AIzaSyB1yd8k_keyDemLNp7Z1g7WnPJBIESubAA';
 
 // Set up context menu on install
 browser.runtime.onInstalled.addListener(() => {
@@ -91,7 +91,7 @@ async function sendDefinitionToTab(tabId, data) {
 
 // Call Gemini API for context-aware definition
 async function getGeminiDefinition(word, context) {
-  const url = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
   
   const response = await fetch(url, {
     method: 'POST',
