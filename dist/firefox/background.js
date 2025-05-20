@@ -4,7 +4,7 @@
 const definitionCache = {};
 
 // Gemini API key (replace with your actual key)
-const GEMINI_API_KEY = 'GEMINI_API_KEY';
+const GEMINI_API_KEY = 'AIzaSyB1yd8k_keyDemLNp7Z1g7WnPJBIESubAA';
 
 // Set up context menu on install
 browser.runtime.onInstalled.addListener(() => {
@@ -91,31 +91,24 @@ async function sendDefinitionToTab(tabId, data) {
 
 // Call Gemini API for context-aware definition
 async function getGeminiDefinition(word, context) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+  const url = `https://context-aware-dictionary.reginaldkyalo.me/api/define`;
   
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      // Optional: Include authentication
+      'Authorization': `Bearer ${userToken}`
     },
     body: JSON.stringify({
-      contents: [{
-        parts: [{
-          text: `Give me a clear, concise dictionary definition of the word "${word}" that specifically fits the following context. Focus on the meaning that's most relevant to this context:
-          
-          Text context: "${context.surroundingText}"
-          
-          Page title: "${context.pageTitle}"
-          
-          Format your response as a dictionary-style definition without mentioning the context I provided.`
-        }]
-      }]
+      word: word,
+      context: context
     })
   });
   
   if (!response.ok) {
     const errorData = await response.json();
-    throw new Error(`API Error: ${errorData.error?.message || 'Unknown error'}`);
+    throw new Error(`API Error: ${errorData.error || 'Unknown error'}`);
   }
   
   const data = await response.json();

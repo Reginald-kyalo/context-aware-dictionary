@@ -1,0 +1,23 @@
+// Add options page for users to input their own API keys
+document.addEventListener('DOMContentLoaded', () => {
+  const apiKeyInput = document.getElementById('api-key');
+  const saveButton = document.getElementById('save-button');
+  
+  // Load saved API key if any
+  browser.storage.sync.get('geminiApiKey').then(result => {
+    if (result.geminiApiKey) {
+      apiKeyInput.value = result.geminiApiKey;
+    }
+  });
+  
+  saveButton.addEventListener('click', () => {
+    browser.storage.sync.set({
+      geminiApiKey: apiKeyInput.value
+    }).then(() => {
+      document.getElementById('status').textContent = 'Saved!';
+      setTimeout(() => {
+        document.getElementById('status').textContent = '';
+      }, 1500);
+    });
+  });
+});

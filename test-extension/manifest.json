@@ -1,14 +1,14 @@
 {
-  "manifest_version": 3,
-  "name": "Context-Aware Dictionary",
+  "manifest_version": 2,
+  "name": "Context Dictionary",
   "version": "1.0.0",
-  "description": "A context-aware dictionary extension powered by Gemini AI",
+  "description": "A context-aware dictionary extension using Gemini AI",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "action": {
+  "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
@@ -19,7 +19,8 @@
   "permissions": [
     "activeTab",
     "storage",
-    "contextMenus"
+    "contextMenus",
+    "<all_urls>"
   ],
   "content_scripts": [
     {
@@ -29,10 +30,12 @@
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["browser-polyfill.js", "background.js"]
   },
-  "options_ui": {
-    "page": "options.html",
-    "open_in_tab": true
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "context-dictionary@reginald-kyalo.com",
+      "strict_min_version": "57.0"
+    }
   }
 }
